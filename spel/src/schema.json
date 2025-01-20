@@ -1,0 +1,75 @@
+{
+  "title": "Product Filters Request",
+  "type": "object",
+  "properties": {
+    "context": {
+      "type": "string"
+    },
+    "customerId": {
+      "type": "string"
+    },
+    "productCode": {
+      "type": "string"
+    },
+    "filters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "operator": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": ["key", "operator", "status"]
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "properties": {
+        "pageSize": {
+          "type": "integer",
+          "minimum": 50,
+          "message": {
+            "minimum": " 'pageSize' must be 50 or below."
+          }
+        },
+        "pageIndex": {
+          "type": "integer",
+          "maximum": 5,
+          "message": {
+            "maximum": " 'pageIndex' must be 5 or above."
+          }
+        }
+      },
+      "required": ["pageSize", "pageIndex"]
+    },
+    "sorting": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "enum": ["asc", "desc"],
+          "message": {
+            "enum": " 'value' must be 'asc' or 'desc'."
+          }
+        }
+      },
+      "required": ["key", "value"]
+    }
+  },
+  "required": ["context", "customerId", "productCode", "filters", "pagination", "sorting"],
+  
+  "additionalProperties": false,
+  "message" : {
+  "required" : " 'customerId' must be there."
+  }
+  }

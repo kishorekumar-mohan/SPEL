@@ -1,0 +1,5 @@
+{
+    "valid": false,
+    "errors": ["Validation error messages here"],
+    "extraFields": ["unexpectedField"]
+}
